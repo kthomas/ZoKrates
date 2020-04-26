@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'production',
-  entry: path.resolve(__dirname, 'index.js'),
+  entry: path.resolve(__dirname, 'pkg', 'index.js'),
   externals: [
     nodeExternals({
       modulesDir: path.resolve(__dirname, './node_modules'),
