@@ -19,11 +19,13 @@
   ],
   "types": "index.d.ts",
   "scripts": {
-    "cargo:build": "cargo build --target=wasm32-unknown-unknown",
-    "wasm-pack:build": "wasm-pack build --out-name index --release --target bundler",
+    "build:cjs": "./node_modules/.bin/tsc -p tsconfig.cjs.json",
+    "build:umd": "webpack",
+    "build": "rm -rf ./dist && rm -rf ./pkg && npm install && gulp stdlib && npm run wasm-pack:build && npm run build:cjs && npm run build:umd",
+    "cargo:build": "cargo +nightly build --target=wasm32-unknown-unknown",
+    "wasm-pack:build": "rustup run nightly wasm-pack build --out-name index --release --target bundler",
     "setup": "npm install && gulp stdlib",
     "prebuild": "npm run setup",
-    "build": "rimraf pkg && npm run wasm-pack:build",
     "pretest": "npm run setup",
     "test": "mocha --require esm --recursive tests"
   },
@@ -35,7 +37,18 @@
     "mocha": "^6.2.2",
     "rimraf": "^3.0.0",
     "serve": "^11.2.0",
-    "text-encoding": "^0.7.0"
+    "text-encoding": "^0.7.0",
+    "ts-jest": "^24.1.0",
+    "ts-loader": "^6.0.4",
+    "tslint": "5.20.1",
+    "tslint-config-airbnb": "5.11.2",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-plugin-prettier": "2.0.1",
+    "typescript": "^3.5.2",
+    "wasm-loader": "^1.3.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {}
 }
