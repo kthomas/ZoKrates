@@ -3,7 +3,7 @@
 default: build
 
 build:
-	ssh-add && RUST_BACKTRACE=1 rustup run nightly cargo -Z package-features build --debug ##--features="libsnark"
+	ssh-add && RUST_BACKTRACE=1 rustup run nightly cargo -Z package-features build ##--features="libsnark"
 
 clean:
 	rustup run nightly cargo clean
