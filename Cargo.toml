@@ -1,6 +1,7 @@
 [workspace]
 
 members = [
+    "zokrates_baseline_zkp_wrapper",
     "zokrates_core",
     "zokrates_cli",
     "zokrates_fs_resolver",
